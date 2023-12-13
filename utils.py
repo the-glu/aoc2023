@@ -52,3 +52,14 @@ def around(x, y, croix=True, vertical=True, horizontal=True, own=False):
         deltas.append((0, 0))
     for dx, dy in deltas:
         yield (x + dx, y + dy)
+
+## https://python.jpvweb.com/python/mesrecettespython/doku.php?id=pgcd_ppcm
+def ppcm(*n):
+    def _pgcd(a,b):
+        while b:
+            a, b = b, a % b
+        return a
+    p = abs(n[0] * n[1]) // _pgcd(n[0], n[1])
+    for x in n[2:]:
+        p = abs(p * x) // _pgcd(p, x)
+    return p
