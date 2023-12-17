@@ -63,3 +63,17 @@ def ppcm(*n):
     for x in n[2:]:
         p = abs(p * x) // _pgcd(p, x)
     return p
+
+
+def readmap(data):
+    m = {}
+    for xp, xx in enumerate(data):
+        for xy, d in enumerate(xx):
+            m[xp, xy] = d
+    return m, len(data), len(data[0])
+
+def printmap(m, mx, my):
+    for x in range(0, mx):
+        for y in range(0, my):
+            print(m.get((x, y), ''), end='')
+        print("")
